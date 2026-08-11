@@ -1,6 +1,6 @@
-# Vores Camping v30
+# Vores Camping v30.1 – Stabilitet & Finish
 
-Den komplette personlige camping-, ferie- og mindeapp – bygget som statisk PWA til GitHub Pages.
+Personlig camping-, ferie- og mindeapp som statisk PWA til GitHub Pages.
 
 ## Udgivelse
 
@@ -10,75 +10,48 @@ Den komplette personlige camping-, ferie- og mindeapp – bygget som statisk PWA
 - Intet build-trin
 - Ingen GitHub Action nødvendig
 
-Upload hele projektet til repository-roden og vælg i **Settings → Pages**: `Deploy from a branch` → `main` → `/docs`.
+Upload indholdet af denne pakke til repository-roden og lad GitHub Pages udgive `main /docs`.
 
-## Appens vigtigste princip
+## Opgradering fra v30
 
-**Find én gang → gem én gang → brug overalt.**
+v30.1 beholder samme lokale datanøgle (`voresCamping.v30.state`), så eksisterende v30-data fortsætter direkte efter udskiftning af filerne. Tag stadig en backup i appen før opgradering.
 
-Campingpladsen oprettes én gang og refereres derefter fra besøg, ferier, ruter, billeder, kort, rangliste og feriealbum.
+ORS- og MapTiler-nøgler gemmes separat i browserens lokale lager og medtages ikke i almindelige camping-backups.
 
-## Implementeret i v30
+## Vigtigste ændringer i v30.1
 
-- Overblik med personligt dashboard, statistik, nedtælling, vejr, kort og Ferie Vagt-status
-- Besøgte campingpladser og ønskeliste
-- Fælles campingpladsformular med automatisk stedssøgning og manuel registrering
-- Campingpladsdetaljer, besøg, billeder, noter, tags og 1–5 stjerner
-- Egne vurderingskategorier og standardikoner
-- Automatisk Bedst bedømte-rangliste
-- MapLibre GL + OpenFreeMap + OpenStreetMap-data
-- Besøgte/ønskede markører, stort kort, GPS, søgning og klik-på-kort
-- OpenRouteService Directions, geocoding/autocomplete, reverse geocoding, POI, isochrones og elevation
-- Bil, HGV/bil+campingvogn, cykel, elcykel, MTB, gang, vandring og kørestol hvor ORS understøtter profilen
-- HGV-mål/vægt og valg for motorveje, betalingsveje og færger
-- Cykelruter med dato, sværhedsgrad, cykeltype og elcykel-rækkevidde
-- Ferier med aktiv ferie, deltagere, kæledyr og tidslinje
-- Ferie Vagten med de vedhæftede illustrationer og automatisk ferieopsamling
-- Ferie Albummet
-- Billeder komprimeres ved upload og gemmes lokalt i IndexedDB
-- Vejr via Open-Meteo som separat hjælpefunktion
-- Personer og kæledyr oprettes én gang og genbruges
-- JSON-backup med billeder; ORS API-nøglen udelades
-- Forsøg på migrering af ældre lokale campingdata fra kendte localStorage-navne
-- PWA/service worker og responsivt tablet/desktop/mobil-layout
-
-## OpenRouteService
-
-API-nøglen indsættes under **Indstillinger → Kort & OpenRouteService**. Den gemmes separat i browserens localStorage og medtages ikke i appens almindelige backup.
-
-Appen bruger de nye HeiGIT-adresser:
-
-- `https://api.heigit.org/openrouteservice`
-- `https://api.heigit.org/pelias/v1`
-- `https://api.heigit.org/openpoiservice/v0/pois`
-- `https://api.heigit.org/openelevationservice/v0`
-- `https://api.heigit.org/vroom/v0`
-
-Den vedhæftede, opryddede ORS-referencepakke er bevaret under `reference/openrouteservice/` som udviklingsreference.
-
-### Om API-nøglen i en statisk app
-
-En nøgle, der bruges direkte fra browser-JavaScript, kan ikke gøres hemmelig på samme måde som på en server. V30 holder den ude af campingdata og backup, men en bruger med adgang til browserens udviklerværktøjer på enheden kan stadig se den. Det er normalt for en ren GitHub Pages-løsning.
+- Cykelrute-redigering bevarer sværhedsgrad, cykeltype og elcykel-rækkevidder.
+- Flere cykler kan tilknyttes samme cykelrute.
+- Rutestop har egne noter og kan få billeder.
+- Ruter har detaljevisning og deling via enhedens delingsfunktion med clipboard-fallback.
+- Ferie Vagtens automatiske opsamling respekteres konsekvent ved besøg, noter, ruter og billeder.
+- Ferie Albummet viser kun afsluttede ferier.
+- Billeder kan åbnes stort, bladres i og slettes fra appen.
+- Feriedetaljen viser billedgalleri og billeder indgår i feriehistorien.
+- Oplevelser kan registreres og indgår i feriens tidslinje.
+- Bedst bedømte viser også vinder i hver vurderingskategori.
+- Datoer bruger lokal kalenderdato i stedet for UTC-dato.
+- Uret på Overblik opdateres løbende.
+- MapTiler Satellite v4 og Hybrid v4 er indbygget som MapLibre-kortvalg.
+- MapTiler API-nøglen gemmes separat fra campingdata og backup.
+- Service-worker cache er versionsløftet og inkluderer alle anvendte Ferie Vagt-figurer.
 
 ## Kort
 
-Standardkortet bruger OpenFreeMaps `liberty`-stil. Under Indstillinger kan der vælges flere OpenFreeMap-stile. Satellit/hybrid er lavet som en valgfri MapLibre style-URL, så appen ikke låses til en bestemt betalings- eller tokenbaseret satellitudbyder.
+Standardkort:
+- MapLibre GL
+- OpenFreeMap
+- OpenStreetMap-data
 
-## Lokal lagring
+Satellit/hybrid:
+- MapTiler Satellite v4
+- MapTiler Hybrid v4
+- Kræver egen MapTiler API-nøgle under `Indstillinger → Kort & ORS`
 
-- Strukturerede campingdata: `localStorage`
-- Billedfiler: `IndexedDB`
-- ORS API-nøgle: separat `localStorage`-nøgle
+Geografiske værktøjer:
+- OpenRouteService via `api.heigit.org`
+- ORS-nøgle indsættes under `Indstillinger → Kort & ORS`
 
-Lav jævnligt en backup fra **Indstillinger → Backup & system** – især før browserdata ryddes eller enheden skiftes.
+## Test
 
-## Netværksafhængige funktioner
-
-Campingdata, lister, vurderinger, ferier og lokalt gemte billeder kan bruges uden API-kald. Følgende kræver internet:
-
-- OpenFreeMap-korttiles og kortstyle
-- OpenRouteService-funktioner
-- Open-Meteo-vejr
-- Lucide/MapLibre CDN-filer ved første indlæsning
-
-Service workeren cacher appens egen shell og vigtigste lokale grafiske filer.
+Se `TEST-REPORT.md`.

@@ -1,0 +1,21 @@
+{
+  "method": "POST",
+  "url": "https://api.heigit.org/openelevationservice/v0/line",
+  "body": {
+    "format_in": "geojson",
+    "format_out": "geojson",
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          8.6163,
+          56.3601
+        ],
+        [
+          8.7,
+          56.4
+        ]
+      ]
+    }
+  }
+}
