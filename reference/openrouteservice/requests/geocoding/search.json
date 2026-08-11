@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "url": "https://api.heigit.org/pelias/v1/search",
+  "query": {
+    "text": "Camping Bella Italia",
+    "size": 8,
+    "lang": "da"
+  }
+}

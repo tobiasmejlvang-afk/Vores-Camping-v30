@@ -1,0 +1,45 @@
+{
+  "method": "POST",
+  "url": "https://api.heigit.org/vroom/v0",
+  "body": {
+    "jobs": [
+      {
+        "id": 1,
+        "location": [
+          8.7,
+          56.4
+        ]
+      },
+      {
+        "id": 2,
+        "location": [
+          8.75,
+          56.35
+        ]
+      },
+      {
+        "id": 3,
+        "location": [
+          8.65,
+          56.3
+        ]
+      }
+    ],
+    "vehicles": [
+      {
+        "id": 1,
+        "start": [
+          8.6163,
+          56.3601
+        ],
+        "end": [
+          8.6163,
+          56.3601
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "Bonusfunktion til at finde en god rækkefølge mellem flere udflugtsstop."
+  ]
+}
