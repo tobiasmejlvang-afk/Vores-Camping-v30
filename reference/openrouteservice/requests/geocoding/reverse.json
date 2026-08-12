@@ -1,0 +1,10 @@
+{
+  "method": "GET",
+  "url": "https://api.heigit.org/pelias/v1/reverse",
+  "query": {
+    "point.lon": 8.6163,
+    "point.lat": 56.3601,
+    "size": 1,
+    "lang": "da"
+  }
+}

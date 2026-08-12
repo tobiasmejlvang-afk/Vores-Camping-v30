@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "url": "https://api.heigit.org/pelias/v1/autocomplete",
+  "query": {
+    "text": "Garda",
+    "size": 8,
+    "lang": "da"
+  }
+}
