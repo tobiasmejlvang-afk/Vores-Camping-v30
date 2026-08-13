@@ -1,8 +1,0 @@
-{
-  "method": "GET",
-  "url": "https://api.heigit.org/openelevationservice/v0/point",
-  "query": {
-    "geometry": "8.6163,56.3601",
-    "format_out": "point"
-  }
-}
