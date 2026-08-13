@@ -1,0 +1,24 @@
+{
+  "method": "POST",
+  "url": "https://api.heigit.org/openrouteservice/v2/directions/cycling-regular/geojson",
+  "body": {
+    "coordinates": [
+      [
+        8.6163,
+        56.3601
+      ]
+    ],
+    "preference": "recommended",
+    "elevation": true,
+    "options": {
+      "round_trip": {
+        "length": 25000,
+        "points": 5,
+        "seed": 42
+      }
+    }
+  },
+  "notes": [
+    "Alternative- og rundtur-funktioner har en offentlig afstandsgrænse på 100 km."
+  ]
+}

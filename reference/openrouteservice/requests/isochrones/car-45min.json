@@ -1,0 +1,21 @@
+{
+  "method": "POST",
+  "url": "https://api.heigit.org/openrouteservice/v2/isochrones/driving-car",
+  "body": {
+    "locations": [
+      [
+        8.6163,
+        56.3601
+      ]
+    ],
+    "range": [
+      2700
+    ],
+    "range_type": "time",
+    "attributes": [
+      "area",
+      "reachfactor"
+    ],
+    "smoothing": 5
+  }
+}

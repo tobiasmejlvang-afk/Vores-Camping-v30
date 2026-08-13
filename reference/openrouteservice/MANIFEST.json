@@ -1,0 +1,19 @@
+{
+  "package": "OpenRouteService Vores Camping CLEAN",
+  "version": "26.2",
+  "created": "2026-08-10",
+  "source_archive": "Openrouteservice(7).zip",
+  "source_stats": {
+    "total": 123,
+    "json_geojson_valid": 89,
+    "json_geojson_null": 10,
+    "json_geojson_invalid": 0,
+    "gpx_valid": 8,
+    "gpx_invalid": 0
+  },
+  "kept_original_response_count": 28,
+  "generated_request_count": 18,
+  "purpose": "Minimal, app-relevant ORS reference package for Vores Camping",
+  "excluded_server_source": true,
+  "api_key_included": false
+}
